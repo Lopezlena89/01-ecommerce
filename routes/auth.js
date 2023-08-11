@@ -14,7 +14,6 @@ router.post('/register',[
     check('password','El correo debe de tener mas de 6 caracteres').isLength({min:6}),
     check('correo','El correo es obligatorio').isEmail(),
     check('correo').custom(emailExiste),
-    
     validarCampos
 ],registerPost)
 

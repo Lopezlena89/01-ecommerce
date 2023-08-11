@@ -29,7 +29,9 @@ class Server{
 
     middlewares(){
         //Cors;
-        this.app.use(cors());
+        this.app.use(cors({
+            origin:'http://localhost:5173'
+        }));
         
         //Lectura del Json
         this.app.use(express.json());
