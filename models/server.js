@@ -8,13 +8,14 @@ class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-
         this.path = {
-            auth:'/api/auth'
+            auth:'/api/auth',
+            categoria:'/api/categoria'
         }
 
         //Middlewares
         this.middlewares();
+        
         //Conectar a base de datos
         this.conectarDB();
 
@@ -29,9 +30,7 @@ class Server{
 
     middlewares(){
         //Cors;
-        this.app.use(cors({
-            origin:'http://localhost:5173'
-        }));
+        this.app.use(cors());
         
         //Lectura del Json
         this.app.use(express.json());
@@ -39,6 +38,7 @@ class Server{
 
     routes(){
         this.app.use(this.path.auth,require('../routes/auth.js'));
+        this.app.use(this.path.categoria,require('../routes/categoria.js'));
     }   
 
     listen(){
