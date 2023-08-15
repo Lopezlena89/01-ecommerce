@@ -10,7 +10,8 @@ class Server{
         this.port = process.env.PORT;
         this.path = {
             auth:'/api/auth',
-            categoria:'/api/categoria'
+            categoria:'/api/categoria',
+            producto:'/api/producto'
         }
 
         //Middlewares
@@ -39,6 +40,7 @@ class Server{
     routes(){
         this.app.use(this.path.auth,require('../routes/auth.js'));
         this.app.use(this.path.categoria,require('../routes/categoria.js'));
+        this.app.use(this.path.producto,require('../routes/producto.js'));
     }   
 
     listen(){
