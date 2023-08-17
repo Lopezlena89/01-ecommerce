@@ -11,7 +11,8 @@ class Server{
         this.path = {
             auth:'/api/auth',
             categoria:'/api/categoria',
-            producto:'/api/producto'
+            producto:'/api/producto',
+            buscar:'/api/buscar'
         }
 
         //Middlewares
@@ -41,6 +42,7 @@ class Server{
         this.app.use(this.path.auth,require('../routes/auth.js'));
         this.app.use(this.path.categoria,require('../routes/categoria.js'));
         this.app.use(this.path.producto,require('../routes/producto.js'));
+        this.app.use(this.path.buscar,require('../routes/buscar.js'));
     }   
 
     listen(){
