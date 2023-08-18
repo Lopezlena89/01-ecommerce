@@ -9,8 +9,9 @@ const coleccionesPermitidas = [
 ]
 
 const buscarUsuarios = async(termino = '',res = response) =>{
-
+    //Si es un ID de mongo regresa un true y si no un false
     const esMongoID = ObjectId.isValid( termino );
+    
 
     if( esMongoID ){
         const usuario = await Usuario.findById(termino);
@@ -18,6 +19,7 @@ const buscarUsuarios = async(termino = '',res = response) =>{
             results:(usuario) ? [ usuario ] : []
         })
     }
+    //Expresion regular es insensible a las mayusculas y minusculas
     const regex = new RegExp( termino, 'i');
     const usuarios = await Usuario.find({
         $or:[{nombre:regex},{ correo: regex}],
